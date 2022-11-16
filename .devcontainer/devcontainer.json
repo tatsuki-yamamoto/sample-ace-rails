@@ -1,0 +1,50 @@
+{
+  "name": "container backend",
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+  "service": "backend",
+  "workspaceFolder": "/app",
+  "shutdownAction": "none", // VSCode終了時にコンテナを終了しない
+  // コンテナ接続時の設定を上書きできる
+  "settings": {
+    // デフォルトで`"terminal.integrated.profiles.linux"`の`"bash"`をターミナルで起動させる。
+    "terminal.integrated.defaultProfile.linux": "bash",
+    // シェルのプロファイル名に対して`"path"`で実行するシェルのパスを指定し、`"args"`で起動時の引数を指定する。
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/bin/bash"
+      }
+    },
+    // 構文チェックしてくれるようになる
+    "ruby.useLanguageServer": true,
+    // Formatで使用するツールを`bundle exec`で実行する
+    "ruby.useBundler": true,
+    // 保存時の設定
+    "[ruby]": {
+      "editor.formatOnSave": true
+    },
+    "editor.formatOnSaveTimeout": 5000,
+    // rubocop（静的コード解析ツール）設定
+    "editor.defaultFormatter": "misogi.ruby-rubocop",
+    "ruby.format": "rubocop",
+    "ruby.lint": {
+      "rubocop": {
+        "useBundler": true,
+        "except": ["Metrics"] // because it is annoying that it puts wavy lines to all lines in those methods
+      }
+    },
+    "ruby.rubocop.executePath": "/usr/local/bundle/bin/",
+    "ruby.rubocop.configFilePath": "",
+    // solargraph（コード自動補完ツール）設定
+    "solargraph.useBundler": true,
+    "solargraph.bundlerPath": "/usr/local/bin/bundle"
+  },
+  // ここに書いておいた拡張は自動的にコンテナ作成時にインストールされる
+  "extensions": [
+    "rebornix.ruby",
+    "wingrunr21.vscode-ruby",
+    "visualstudioexptteam.vscodeintellicode",
+    "redhat.vscode-yaml",
+    "castwide.solargraph",
+    "misogi.ruby-rubocop"
+  ]
+}
