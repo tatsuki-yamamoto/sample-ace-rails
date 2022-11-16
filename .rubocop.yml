@@ -10,13 +10,13 @@ Rails:
 # 自動生成したファイルはRubocopでチェックしない
 AllCops:
   Exclude:
-    - 'Gemfile'
-    - 'Gemfile.lock'
-    - 'bin/**/*'
-    - 'db/**/*'
-    - 'vendor/**/*'
-    - 'tmp/**/*'
-    - 'config/**/*'
+    - "Gemfile"
+    - "Gemfile.lock"
+    - "bin/**/*"
+    - "db/**/*"
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - "config/**/*"
     # - 'spec/**/*'
 
 # 日本語でのコメントを許容する
@@ -59,7 +59,7 @@ Metrics/AbcSize:
 
 # 変数にe使用できるようにするため
 Naming/MethodParameterName:
-  AllowedNames: ['e']
+  AllowedNames: ["e"]
 
 # 数値リテラルを3ケタ区切りで _ で区切っているかどうかチェックしない
 Style/NumericLiterals:
