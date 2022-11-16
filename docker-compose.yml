@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    container_name: backend
+    build:
+      # Dockerfileでファイルの読み込み先を指定
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      # volumeを使用してbundle installしてきたものを永続化
+      - api-bundle:/usr/local/bundle
+    ports:
+      - "8888:3000"
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
+  api-bundle:

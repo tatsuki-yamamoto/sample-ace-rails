@@ -1,0 +1,74 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+# copの有効化
+Rails:
+  Enabled: true
+
+# 自動生成したファイルはRubocopでチェックしない
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'Gemfile.lock'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'config/**/*'
+    # - 'spec/**/*'
+
+# 日本語でのコメントを許容する
+AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 1行の最大文字数を150字にする
+LineLength:
+  Max: 150
+
+# ドキュメントのないclassを許容するため
+Style/Documentation:
+  Enabled: false
+
+# クラス内のクラスなどを定義する際の形式を強制する
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+# if elseの後に何もステイトメントがない場合も許容するため
+Style/EmptyElse:
+  Enabled: false
+
+# クラスの長さをチェックする
+ClassLength:
+  Max: 300 # クラスの文字数
+
+# ひとつのメソッドに含まれる行数が多すぎる場合も許容するため
+Metrics/MethodLength:
+  Enabled: false
+
+# ABC Sizeチェックも許容するため
+# Assignment : 変数への代入
+# Branch : メソッド呼び出し
+# Condition : 条件文
+Metrics/AbcSize:
+  Enabled: false
+
+# 変数にe使用できるようにするため
+Naming/MethodParameterName:
+  AllowedNames: ['e']
+
+# 数値リテラルを3ケタ区切りで _ で区切っているかどうかチェックしない
+Style/NumericLiterals:
+  Enabled: false
+
+# 日本語を許容するため
+RSpec/ContextWording:
+  Enabled: false
+
+# <<~EOS EOSを使いたいため
+Naming/HeredocDelimiterNaming:
+  Enabled: false
