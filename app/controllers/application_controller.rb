@@ -9,6 +9,7 @@ class ApplicationController < ActionController::API
   rescue_from ActionController::BadRequest, with: :rescue400
   Forbidden = Class.new(ActionController::ActionControllerError)
   rescue_from Forbidden, with: :rescue403
+  rescue_from ActionController::RoutingError, with: :rescue404
   rescue_from ActiveRecord::RecordNotFound, with: :rescue404
   rescue_from ActiveRecord::RecordInvalid, with: :rescue422
   rescue_from ActiveRecord::RecordNotDestroyed, with: :rescue422
