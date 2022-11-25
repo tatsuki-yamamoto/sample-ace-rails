@@ -7,8 +7,7 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
       :first_name,
       :email,
       :password,
-      :password_confirmation,
-      :confirm_success_url
+      :password_confirmation
     )
   end
 
@@ -16,7 +15,10 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
     params.permit(
       :last_name,
       :first_name,
-      :email
+      :email,
+      :current_password,
+      :password,
+      :password_confirmation,
     )
   end
 end

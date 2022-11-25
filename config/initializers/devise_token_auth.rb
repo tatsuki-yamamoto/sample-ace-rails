@@ -13,11 +13,18 @@ DeviseTokenAuth.setup do |config|
                           :'token-type' => 'token-type',
                           :'authorization' =>  'authorization'}
 
-  # 「アカウント確認」のURL
+  # アカウント確認後に遷移するURL
   config.default_confirm_success_url = "http://localhost:3000/login"
 
-  # 「アカウント確認」のURL
+  # パスワード再設定画面のURL
   config.default_password_reset_url = "http://localhost:3000/auth/password-reset"
 
+  # パスワード再設定時にトークンを使用するか
   config.require_client_password_reset_token = true
+
+  # メールアドレス変更時に確認メールを送るか
+  config.send_confirmation_email = true
+
+  # パスワード変更時に現在のパスワードもチェックするか
+  config.check_current_password_before_update = true
 end
