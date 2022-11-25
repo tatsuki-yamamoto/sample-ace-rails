@@ -1,4 +1,5 @@
 class Api::V1::TodosController < ApplicationController
+  before_action :authenticate_api_v1_user!
   before_action :set_todo, only: %i[show update destroy]
 
   # GET /api/v1/todos

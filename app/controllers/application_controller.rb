@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :snake2camel_params
+  include DeviseTokenAuth::Concerns::SetUserByToken
 
   # エラーハンドリング
   # ハンドルしきれなかったエラーは500エラー扱い
@@ -136,10 +136,5 @@ class ApplicationController < ActionController::API
 
     payload[:exception_object] ||= @exception
     payload[:exception] ||= [@exception.class.name, @exception.message]
-  end
-
-  # RequestのkeysをcamelCaseからsnake_caseへ変換
-  def snake2camel_params
-    params.deep_transform_keys!(&:underscore)
   end
 end
